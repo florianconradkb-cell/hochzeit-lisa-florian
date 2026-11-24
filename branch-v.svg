@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="8 88 76 226">
+  <defs>
+    <path id="lf" d="M0 0 C5 -7 15 -9 22 -6 C17 -1 8 1.5 0 0 Z"/>
+    <g id="fl"><g fill="#EDB9C0"><ellipse cx="0" cy="-5" rx="3.4" ry="4.8"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(288)"/></g><circle r="2.1" fill="#EBCB7C"/></g>
+  </defs>
+  <path d="M59.06 295.06 A170 170 0 0 1 62.47 100.08" fill="none" stroke="#9DB394" stroke-width="1.2" stroke-linecap="round"/>
+  <g fill="#9DB394">
+    <use xlink:href="#lf" opacity="1" transform="translate(49.9 279.81) rotate(-152) scale(1)"/>
+    <use xlink:href="#lf" opacity=".72" transform="translate(41.83 262.31) rotate(-77.5) scale(0.95)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(35.79 244) rotate(-139) scale(0.9)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(31.87 225.13) rotate(-64.5) scale(0.85)"/>
+    <use xlink:href="#lf" opacity=".72" transform="translate(30.1 205.93) rotate(-126) scale(0.8)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(30.52 186.66) rotate(-51.5) scale(0.75)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(33.12 167.56) rotate(-113) scale(0.7)"/>
+    <use xlink:href="#lf" opacity=".72" transform="translate(37.87 148.88) rotate(-38.5) scale(0.65)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(44.7 130.85) rotate(-100) scale(0.6)"/>
+  </g>
+  <use xlink:href="#fl" transform="translate(59.06 295.06) scale(1.35)"/>
+  <use xlink:href="#fl" transform="translate(46.06 286.06) scale(.85)"/>
+  <circle cx="68.06 " cy="306.06" r="2.4" fill="#D9C2E6"/>
+  <circle cx="62.47" cy="100.08" r="2.6" fill="#EDB9C0"/>
+</svg>

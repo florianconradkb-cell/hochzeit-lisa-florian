@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80 28">
+  <defs>
+    <path id="l" d="M0 0 C3 -5 9 -6.6 14 -5 C10.6 -0.6 5 0.7 0 0 Z" fill="#9DB394"/>
+    <ellipse id="p" cx="0" cy="-5.6" rx="3.4" ry="5" fill="#EDB9C0"/>
+  </defs>
+  <!-- feiner Stiel -->
+  <path d="M22 15 C32 16.5 48 16.5 58 15" fill="none" stroke="#9DB394" stroke-width=".7" stroke-linecap="round"/>
+  <!-- je ein Blatt links und rechts -->
+  <use xlink:href="#l" transform="translate(34 16.2) rotate(195)"/>
+  <use xlink:href="#l" transform="translate(46 16.2) rotate(-15)"/>
+  <!-- eine Blüte -->
+  <g transform="translate(40 13)">
+    <use xlink:href="#p"/>
+    <use xlink:href="#p" transform="rotate(72)"/>
+    <use xlink:href="#p" transform="rotate(144)"/>
+    <use xlink:href="#p" transform="rotate(216)"/>
+    <use xlink:href="#p" transform="rotate(288)"/>
+    <circle r="2.2" fill="#EBCB7C"/>
+  </g>
+</svg>

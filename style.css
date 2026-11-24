@@ -1,0 +1,1270 @@
+/* ==========================================================
+   Hochzeit – gemeinsames Stylesheet
+   Schlicht · schön · ruhig · verschiedene Weisstöne
+   ========================================================== */
+
+:root {
+  /* Frühlingstöne – zartes Rosa, Salbei, Blütenweiss */
+  --white:      #FFFFFF;
+  --snow:       #FDFBF7;
+  --ivory:      #FBF2F1;   /* Hauch Rosa */
+  --linen:      #EFF3EA;   /* Hauch Salbei */
+  --pearl:      #F0E1E0;
+  --line:       #E4CFCF;
+
+  /* Text & Akzente */
+  --ink:        #4B4442;
+  --ink-soft:   #7D7270;
+  --accent:     #C4848E;   /* Altrosa */
+  --leaf:       #8FA886;   /* Salbeigrün */
+  --blossom:    #EDB9C0;   /* Kirschblüte */
+
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans:  "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --max: 1000px;
+
+  /* Schnörkel-Ornament (Farbe = --accent) */
+  /* Blumen-Ornamente (eigene Dateien) */
+  --ornament: url("ornament.svg");
+  --branch:   url("branch.svg");
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--snow);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 23px;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 4px; transition: text-decoration-color .3s; }
+a:hover { text-decoration-color: var(--accent); }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linen);
+}
+.nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 14px 16px;
+  max-width: var(--max);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 32px;
+}
+.nav a {
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.nav a:hover { color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 80px 16px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 30%, var(--white) 0%, var(--ivory) 55%, var(--linen) 100%);
+}
+/* Blütenzweige in den Ecken */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: clamp(150px, 28vw, 300px);
+  aspect-ratio: 1;
+  background: var(--branch) center / contain no-repeat;
+  opacity: .8;
+  pointer-events: none;
+  animation: heroFade 2.4s ease 2s both;
+}
+.hero::before { top: 0; left: 0; }
+.hero::after  { bottom: 0; right: 0; transform: rotate(180deg); }
+.hero__inner { position: relative; z-index: 1; }
+.hero__inner { max-width: 760px; }
+
+/* Namen: weich aus der Unschärfe */
+.hero__names {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(56px, 11vw, 112px);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+  animation: heroNames 2.4s cubic-bezier(.2,.7,.2,1) .8s both;
+}
+.hero__names .amp {
+  color: var(--accent);
+  font-size: 0.8em;
+  display: inline-block;
+  animation: heroFade 1.6s ease 2s both;
+}
+
+.hero__invite {
+  font-size: clamp(17px, 3.6vw, 29px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 26px;
+  animation: heroUp 1.4s ease .2s both;
+}
+
+/* feine Linie wächst aus der Mitte */
+.hero__line {
+  width: 200px;
+  height: 27px;
+  margin: 36px auto;
+  background: var(--ornament) center / contain no-repeat;
+  opacity: .85;
+  transform-origin: center;
+  animation: heroLine 1.2s ease 2.6s both;
+}
+
+/* kleine Zusammenfassung */
+.hero__summary { animation: heroUp 1.6s ease 3.3s both; }
+.hero__summary p { margin: 0; }
+.hero__date {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 44px);
+  line-height: 1.3;
+}
+.hero__time {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.5vw, 34px);
+  color: var(--accent);
+  margin-bottom: 22px !important;
+}
+.hero__place {
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero__address {
+  font-size: 21px;
+  color: var(--ink-soft);
+  margin-top: 4px !important;
+}
+
+@keyframes heroNames {
+  from { opacity: 0; filter: blur(10px); letter-spacing: 0.12em; }
+  to   { opacity: 1; filter: blur(0);    letter-spacing: 0; }
+}
+@keyframes heroFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes heroLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__names, .hero__names .amp, .hero__invite,
+  .hero__line, .hero__summary,
+  .hero::before, .hero::after { animation: none; }
+}
+
+/* ---------- Sections ---------- */
+section { padding: 104px 16px; }
+section:nth-of-type(odd)  { background: var(--snow); }
+section:nth-of-type(even) { background: var(--ivory); }
+
+/* Blütenzweige auf allen farbigen Hintergründen */
+section:nth-of-type(even),
+footer {
+  background-image: var(--branch), url("branch-br.svg");
+  background-position: top left, bottom right;
+  background-size: clamp(110px, 18vw, 200px), clamp(110px, 18vw, 200px);
+  background-repeat: no-repeat;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; }
+.narrow { max-width: 620px; margin: 0 auto; }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.section-title h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(38px, 6vw, 52px);
+  line-height: 1.15;
+  margin: 0;
+}
+.section-title p {
+  margin: 14px auto 0;
+  max-width: 520px;
+  color: var(--ink-soft);
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 18px;
+  background: var(--ornament) center / contain no-repeat;
+  margin: 22px auto 0;
+  opacity: .75;
+}
+
+.lead {
+  font-family: var(--serif);
+  font-size: clamp(25px, 3vw, 29px);
+  line-height: 1.6;
+  text-align: center;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ---------- Einleitung: Spruch zwischen zwei senkrechten Zweigen ---------- */
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  /* darf breiter sein als der normale Inhaltsbereich */
+  --intro-w: min(90vw, 1500px);
+  width: var(--intro-w);
+  margin: 0 calc((100% - var(--intro-w)) / 2);
+}
+/* waagrechte Blütenranke wie beim Programm */
+.intro__vine {
+  display: block;
+  width: min(100%, 620px);
+  height: 40px;
+  background: url("vine-h.svg") left center / auto 40px repeat-x;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 82%, transparent 100%);
+}
+.intro__vine--bottom { transform: scaleY(-1); background-position: 70px center; }
+/* kleine Blüten oben, ca. ein Drittel so breit wie die Ranke unten */
+.intro__blossoms {
+  display: block;
+  width: 96px;
+  aspect-ratio: 80 / 28;
+  background: url("blossoms.svg") center / contain no-repeat;
+}
+.intro__text {
+  margin: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(32px, 3.9vw, 44px);
+  text-wrap: balance;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.intro__text em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.intro__br { display: none; }   /* bei 44px passt es nicht mehr auf 2 Zeilen: Umbruch automatisch & ausgewogen */
+/* ---------- Programm / Timeline ---------- */
+.timeline {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 680px;
+}
+/* Mittelachse genau unter dem Titel: Zeit links, Text rechts */
+.timeline { --tl-pad: 170px; --tl-gap: 32px; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--tl-gap);
+  padding: 26px 0;
+  border-bottom: 1px solid var(--pearl);
+}
+.timeline li:last-child { border-bottom: 0; }
+.timeline time {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.2;
+  font-variant-numeric: lining-nums;
+  color: var(--accent);
+  text-align: right;
+  white-space: nowrap;
+  padding-right: var(--tl-pad);
+  position: relative;
+}
+/* durchgehende Blütenranke senkrecht zwischen Zeit und Text */
+.timeline { position: relative; --tl-vine: 40px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: -5px;
+  left: calc(50% - var(--tl-pad) / 2 - var(--tl-vine) / 2);
+  width: var(--tl-vine);
+  background: url("vine.svg") center top / var(--tl-vine) auto repeat-y;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  pointer-events: none;
+}
+.timeline li { position: relative; }
+.timeline h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+.timeline p { margin: 0; color: var(--ink-soft); }
+.timeline h3:only-child { margin: 0; }
+.timeline .timeline__hint { font-size: .85em; color: var(--accent); margin-top: 2px; }
+
+/* ---------- Karten ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--linen);
+  padding: 34px 28px;
+  text-align: center;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 29px;
+  margin: 0 0 6px;
+}
+.card .meta {
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+.card p { margin: 0 0 8px; color: var(--ink-soft); }
+
+/* ---------- Unterkünfte ---------- */
+.stay {
+  background: var(--white);
+  border: 1px solid var(--linen);
+  padding: 40px clamp(22px, 5vw, 48px);
+  margin-bottom: 20px;
+}
+.stay__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  border-bottom: 1px solid var(--linen);
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+}
+.stay__head h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  margin: 0;
+}
+.stay__head > span { font-size: 20px; color: var(--ink-soft); }
+.rooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.rooms li {
+  background: var(--ivory);
+  border: 1px solid var(--pearl);
+  padding: 6px 16px;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+}
+.stay__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Akkordeon Unterkünfte ---------- */
+.stays .stay { padding: 0; margin-bottom: 14px; }
+.stays .stay__head {
+  flex-wrap: nowrap;
+  align-items: center;
+  border-bottom: 0;
+  padding: 22px clamp(18px, 4vw, 36px) 22px var(--stay-gap);
+  margin: 0;
+  gap: 16px;
+}
+.stays { --stay-gap: 24px; }
+.stay__h { flex: 1; min-width: 0; margin: 0; font: inherit; }
+.stay__toggle {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "chev title" "chev sub";
+  align-items: center;
+  column-gap: var(--stay-gap);
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.stay__title {
+  grid-area: title;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;   /* ganzzahlig, damit das +/- scharf bleibt */
+}
+.stay__sub { grid-area: sub; font-family: var(--sans); font-weight: 300; font-size: 20px; line-height: 34px; color: var(--ink-soft); margin-top: 2px; }
+/* schlichtes +/-: zwei gleich dicke Striche, vertikal mittig */
+.stay__chev {
+  grid-area: chev;
+  align-self: center;
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+.stay__chev::before,
+.stay__chev::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+}
+.stay__chev::after { transform: rotate(90deg); }
+.stay__toggle[aria-expanded="true"] .stay__chev::after { display: none; }
+.stay__toggle:hover .stay__title { color: var(--accent); }
+.stay__toggle:focus-visible { outline: 1px solid var(--accent); outline-offset: 6px; }
+
+.stay__book {
+  flex: 0 0 280px;
+  width: 280px;
+  text-align: center;
+  white-space: nowrap;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: var(--ivory);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.stay__book:hover { background: var(--pearl); border-color: var(--accent); }
+.stay__body {
+  border-top: 1px solid var(--linen);
+  padding: 22px clamp(18px, 4vw, 36px) 8px;
+  animation: stayOpen .45s ease;
+}
+@keyframes stayOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 620px) {
+  .stays .stay__head { flex-wrap: wrap; }
+  .stay__h { flex-basis: 100%; }
+  .stay__book { flex: 1 1 100%; width: 100%; }
+  .stay__title { font-size: 28px; }
+  .prices { font-size: 20px; }
+}
+
+.note {
+  text-align: center;
+  font-size: 21px;
+  color: var(--ink-soft);
+  margin: 36px auto 0;
+  max-width: 560px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 1px solid var(--line);
+  background: var(--snow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background .3s, border-color .3s;
+}
+.btn:hover { background: var(--linen); border-color: var(--accent); }
+.btn--solid { background: var(--ink); color: var(--snow); border-color: var(--ink); }
+.btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+
+/* ---------- Geschenke ---------- */
+.gift {
+  background: var(--white);
+  border: 1px solid var(--linen);
+  padding: 44px clamp(22px, 5vw, 56px);
+  text-align: center;
+  margin-top: 44px;
+}
+.gift dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 20px;
+  max-width: 400px;
+  margin: 22px auto 0;
+  text-align: left;
+  font-size: 21px;
+}
+.gift dt { color: var(--accent); letter-spacing: 0.08em; }
+.gift dd { margin: 0; }
+
+/* ---------- Karte (Skizze) ---------- */
+.map {
+  margin: 0 0 28px;
+}
+.map svg { display: block; width: 100%; max-width: 660px; height: auto; margin: 0 auto; }
+.map__house { fill: var(--line); }
+.map figcaption {
+  text-align: right;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+.map__forest  { fill: #E3ECDD; }
+.map__trees circle { fill: #C9D8C0; }
+.map__lot     { fill: var(--ivory); stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.map__road    { fill: none; stroke: var(--pearl); stroke-width: 14; stroke-linecap: round; }
+.map__road--small { stroke-width: 9; }
+.map__walk    { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 2 8; stroke-linecap: round; }
+.map__p circle, .map__bus rect { fill: var(--white); stroke: var(--accent); stroke-width: 1.5; }
+.map__p text, .map__bus text { font-family: var(--sans); font-size: 16px; font-weight: 400; fill: var(--accent); }
+.map__hut circle { fill: var(--ink); }
+.map__hut path   { fill: var(--snow); }
+.map__hut rect   { fill: var(--ink); }
+.map__dot     { fill: var(--accent); }
+.map__north path { fill: var(--accent); }
+.map__north text { font-family: var(--sans); font-size: 12px; fill: var(--ink-soft); }
+.map__label   { font-family: var(--sans); font-size: 14px; fill: var(--ink); letter-spacing: 0.04em; }
+.map__label--soft   { fill: var(--ink-soft); font-size: 13px; }
+.map__label--strong { font-family: var(--serif); font-size: 22px; }
+.map__street  { font-family: var(--serif); font-style: italic; font-size: 16px; fill: var(--ink-soft); }
+.map__walk-label { font-family: var(--serif); font-style: italic; font-size: 17px; fill: var(--accent); }
+
+/* ---------- Reservierungscode ---------- */
+.code {
+  text-align: center;
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 32px clamp(20px, 5vw, 48px);
+  margin-bottom: 28px;
+}
+.code__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 40px);
+  line-height: 1.2;
+  color: var(--accent);
+  margin: 0;
+}
+.code__value {
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 10px 0 12px;
+}
+.code__hint { margin: 0 auto; max-width: 600px; color: var(--ink-soft); font-size: 21px; }
+
+/* ---------- Preistabellen ---------- */
+.stay__text { margin: 0 0 18px; color: var(--ink-soft); }
+.stay__small { font-size: 19px; color: var(--ink-soft); margin: 14px 0 24px; line-height: 1.6; }
+.prices { width: 100%; border-collapse: collapse; font-size: 21px; }
+.prices th {
+  text-align: left;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0 8px 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.prices td { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--linen); vertical-align: top; }
+.prices td small { display: block; font-size: 18px; color: var(--ink-soft); }
+.prices th:last-child, .prices td:last-child { text-align: right; white-space: nowrap; padding-right: 0; }
+.prices td:nth-child(2) { color: var(--ink-soft); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Anmeldung ---------- */
+.rsvp {
+  background: var(--white);
+  border: 1px solid var(--linen);
+  padding: 40px clamp(22px, 5vw, 48px);
+}
+.field { margin: 0 0 22px; border: 0; padding: 0; min-width: 0; }
+.field label, .field legend {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  padding: 0;
+}
+.field .optional { text-transform: none; letter-spacing: 0; }
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="number"],
+.field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--snow);
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 0;
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: var(--white); }
+.field .choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.field .choice input { accent-color: var(--ink); width: 18px; height: 18px; margin: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rsvp .btn { cursor: pointer; font-family: var(--sans); }
+
+footer .footer__lead { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.3; margin: 0; color: var(--ink); }
+
+/* ---------- Geschenk zum Anklicken ---------- */
+.present { position: relative; display: grid; place-items: center; }
+.present__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--accent);
+  font: inherit;
+}
+.present__btn:focus-visible { outline: 1px dashed var(--accent); outline-offset: 10px; border-radius: 12px; }
+.present__svg {
+  width: var(--pw, 480px);                   /* doppelt so gross */
+  height: auto;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  animation: presentFloat 2.8s ease-in-out infinite;
+}
+.present__btn:hover .present__svg { animation: presentWiggle .9s ease-in-out infinite; }
+/* sanftes, ständiges Schweben & Schaukeln */
+@keyframes presentFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  25%      { transform: translateY(-8px) rotate(0deg) scale(1.01); }
+  50%      { transform: translateY(0) rotate(1.5deg); }
+  75%      { transform: translateY(-8px) rotate(0deg) scale(1.01); }
+}
+@keyframes presentWiggle {
+  0%, 100% { transform: rotate(0) scale(1.03); }
+  20% { transform: rotate(-5deg) scale(1.04, 1.01); }
+  40% { transform: rotate(4deg) translateY(-6px); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(2deg) translateY(-3px); }
+}
+.present__shadow { fill: rgba(75, 68, 66, .1); }
+.present__lid {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform .55s cubic-bezier(.3, 1.6, .5, 1);
+  animation: lidPeek 3.2s ease-in-out infinite;   /* Deckel hebt sich neugierig */
+}
+@keyframes lidPeek {
+  0%, 62%, 100% { transform: none; }
+  70% { transform: translateY(-14px) rotate(-5deg); }
+  78% { transform: none; }
+  84% { transform: translateY(-7px) rotate(3deg); }
+  90% { transform: none; }
+}
+.present.is-open .present__lid { animation: none; }
+.present.is-open .present__lid { transform: translate(18px, -70px) rotate(24deg); }
+.present.is-open .present__svg { animation: none; }
+.present__hint {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  animation: presentHint 2.2s ease-in-out infinite;
+}
+@keyframes presentHint { 50% { transform: translateY(-4px); opacity: .7; } }
+.present.is-open .present__hint { opacity: 0; transition: opacity .3s; }
+
+.present__burst { position: absolute; left: 50%; top: 40%; width: 0; height: 0; pointer-events: none; }
+.present__bit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 13px;
+  height: 20px;
+  border-radius: 3px;
+}
+.present__bit--round { width: 14px; height: 14px; border-radius: 50%; }
+.present__bit--heart {
+  width: auto;
+  height: auto;
+  background: none !important;
+  font-size: 34px;
+  line-height: 1;
+}
+
+/* ---------- Wünsche (springen aus dem Geschenk) ---------- */
+:root { --mia-fur: #A8968A; }            /* Mias Fellfarbe – hier anpassen */
+.mia-fur { fill: var(--mia-fur); }
+/* Bühne: Paket in der Mitte, Wünsche landen rundherum */
+.gift-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  --pw: clamp(280px, 56vw, 480px);   /* Breite des Geschenks */
+  --ph: calc(var(--pw) * .95);       /* Höhe des Geschenks */
+  --iw: clamp(100px, 16vw, 170px);   /* Breite der Wünsche */
+  --pt: calc(var(--iw) * .6);        /* etwas Platz oben für Mia */
+  padding-top: var(--pt);
+}
+.present__svg { width: var(--pw); }
+.wishes {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.wish {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--pt) + var(--ph) * .55);      /* Startpunkt: Mitte des Pakets */
+  width: var(--iw);
+  transform: translate(-50%, -50%) translate(var(--x), var(--y));
+}
+.wish:nth-child(1) { --x: calc(-1 * (var(--pw) / 2 + var(--iw) * .75)); --y: calc(var(--ph) * .12); }  /* Hochzeitsreise links */
+.wish:nth-child(2) { width: calc(var(--pw) * .44); --x: 0px; --y: calc(-1 * (var(--ph) * .045 + var(--pw) * .14)); } /* Mia, Harissa & Sansa sitzen oben auf dem Paket */
+.wish:nth-child(3) { --x: calc(var(--pw) / 2 + var(--iw) * .75); --y: calc(var(--ph) * .12); }         /* Reisebus rechts */
+.wish__art { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* Mit JavaScript: erst beim Öffnen aus dem Paket fliegen */
+.js .present:not(.has-opened) + .wishes .wish { opacity: 0; visibility: hidden; }
+.present.has-opened + .wishes .wish { animation: wishFly 1.3s cubic-bezier(.2, .9, .3, 1.15) both; }
+.present.has-opened + .wishes .wish:nth-child(2) { animation-delay: .12s; }
+.present.has-opened + .wishes .wish:nth-child(3) { animation-delay: .24s; }
+/* Zurück ins Paket, bevor der Deckel zugeht */
+.present.is-closing + .wishes .wish {
+  animation: wishBack .75s cubic-bezier(.5, 0, .8, .4) both !important;
+}
+.present.is-closing + .wishes .wish:nth-child(2) { animation-delay: .05s !important; }
+.present.is-closing + .wishes .wish:nth-child(3) { animation-delay: .1s !important; }
+@keyframes wishBack {
+  0%   { opacity: 1; transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1) rotate(0deg); }
+  85%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(0, 10px) scale(.1) rotate(-540deg); }
+}
+@keyframes wishFly {
+  0%   { opacity: 0; transform: translate(-50%, -50%) translate(0, 10px) scale(.1) rotate(0deg); }
+  12%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1) rotate(720deg); }
+}
+.wish:nth-child(2) .wish__art { animation: miaBob 3s ease-in-out 1.6s infinite; }
+.mia__meow { transform-box: fill-box; transform-origin: 80% 100%; animation: miaMeow 2.4s ease-in-out 1.4s infinite; }
+.sansa__say { transform-box: fill-box; transform-origin: 20% 100%; animation: miaMeow 2.4s ease-in-out 2.6s infinite; }
+@keyframes miaMeow { 0%, 60%, 100% { transform: scale(1); } 70% { transform: scale(1.18) rotate(-4deg); } 80% { transform: scale(1); } 88% { transform: scale(1.1) rotate(3deg); } }
+@keyframes miaBob { 50% { transform: translateY(-4px) rotate(-2deg); } }
+/* Handy: Reise & Bus unter dem Paket */
+@media (max-width: 700px) {
+  .gift-stage { --pw: min(70vw, 300px); --iw: min(30vw, 120px); padding-bottom: calc(var(--iw) + 20px); }
+  .wish:nth-child(1) { --x: calc(-1 * var(--iw) * .75); --y: calc(var(--ph) * .45 + var(--iw) * .6); }
+  .wish:nth-child(3) { --x: calc(var(--iw) * .75);      --y: calc(var(--ph) * .45 + var(--iw) * .6); }
+}
+
+/* ---------- Sprechblase mit Kontoangaben ---------- */
+.bubble {
+  position: absolute;
+  z-index: 3;
+  /* relativ zum Paket: rechts oben neben dem Deckel */
+  left: 100%;
+  top: -4%;
+  width: clamp(230px, 25vw, 310px);
+  padding: 16px 18px 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 16px 34px -20px rgba(196, 132, 142, .7);
+  text-align: center;
+  transform-origin: 12% 110%;
+}
+.bubble::after {                      /* Spitze nach unten links */
+  content: "";
+  position: absolute;
+  left: 26px;
+  bottom: -11px;
+  width: 20px;
+  height: 20px;
+  background: var(--white);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: rotate(45deg) skew(10deg, 10deg);
+  border-bottom-right-radius: 4px;
+}
+.bubble__text {
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.bubble__toggle, .bubble__copy {
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: .04em;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 2px 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+}
+.bubble__toggle:hover, .bubble__copy:hover { text-decoration-color: var(--accent); }
+.bubble__toggle[aria-expanded="true"] { display: none; }
+.bubble__bank { text-align: left; font-size: 15px; line-height: 1.5; }
+.bubble__bank p { margin: 0 0 8px; text-align: center; }
+.bubble__bank span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.bubble__iban { font-family: var(--sans); font-size: 15px; word-break: break-word; }
+.bubble__copy { display: block; margin: 4px auto 0; }
+
+/* erscheint mit den Geschenken, verschwindet mit ihnen */
+.js .present:not(.has-opened) .bubble { opacity: 0; visibility: hidden; }
+.present.has-opened .bubble { animation: bubbleIn .5s cubic-bezier(.3, 1.6, .5, 1) 1.1s both; }
+.present.is-closing .bubble { animation: bubbleOut .35s ease-in both !important; }
+@keyframes bubbleIn  { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+@keyframes bubbleOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(.3); } }
+@media (max-width: 480px) {
+  .bubble { left: 38%; top: -48%; }
+}
+/* ---------- Fotobox ---------- */
+.booth {
+  --cw: clamp(230px, 40vw, 320px);            /* Breite der Kamera */
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  min-height: calc(var(--cw) * .9 + 300px);
+}
+.booth__btn { padding: 0; background: none; border: 0; cursor: pointer; position: relative; z-index: 2; }
+.booth__btn:focus-visible { outline: 1px dashed var(--accent); outline-offset: 10px; border-radius: 16px; }
+.booth__svg {
+  display: block;
+  width: var(--cw);
+  height: auto;
+  transform-origin: 50% 100%;
+  animation: presentFloat 3s ease-in-out infinite;
+}
+.booth__btn:hover .booth__svg { animation: presentWiggle .9s ease-in-out infinite; }
+.booth__flashlamp { animation: lampGlow 2.4s ease-in-out infinite; }
+@keyframes lampGlow { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+.booth.is-shooting .booth__svg { animation: boothKick .45s ease-out; }
+@keyframes boothKick {
+  0% { transform: none; }
+  25% { transform: scale(.96, 1.04) translateY(-6px); }
+  60% { transform: scale(1.03, .97); }
+  100% { transform: none; }
+}
+
+/* Blitz über den ganzen Bildschirm */
+.booth__flash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+.booth__flash.is-on { animation: flash .7s ease-out; }
+@keyframes flash { 0% { opacity: 0; } 8% { opacity: .95; } 100% { opacity: 0; } }
+
+/* Sofortbild kommt unten aus dem Schlitz */
+.booth__photo {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(var(--cw) * .82);
+  width: clamp(160px, 24vw, 220px);
+  margin: 0;
+  padding: 10px 10px 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 18px 40px -18px rgba(75, 68, 66, .45);
+  transform: translate(-50%, -30%) scale(.3);
+  opacity: 0;
+}
+.booth__photo figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  color: var(--accent);
+  padding: 8px 0 12px;
+}
+.booth__pic {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #F6D9DE 0%, #E9DDEF 45%, #DCE9D6 100%);
+  display: grid;
+  place-items: center;
+}
+.booth__pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.booth__ph { font-family: var(--serif); font-size: 46px; color: #fff; text-shadow: 0 2px 12px rgba(196, 132, 142, .5); }
+.booth__ph i { font-style: normal; color: var(--accent); }
+
+.booth.has-shot .booth__photo { animation: photoOut 1.1s cubic-bezier(.2, .9, .3, 1.1) .25s both; }
+@keyframes photoOut {
+  0%   { opacity: 0; transform: translate(-50%, -40%) scale(.35); }
+  15%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(-28%, 0) rotate(-6deg) scale(1); }
+}
+/* Foto "entwickelt" sich */
+.booth.has-shot .booth__pic > * { animation: develop 2.6s ease-out .6s both; }
+@keyframes develop {
+  0%   { filter: brightness(2.4) saturate(0) blur(6px); opacity: .25; }
+  100% { filter: none; opacity: 1; }
+}
+
+/* Sprechblase */
+.booth__bubble {
+  left: calc(50% + var(--cw) * .42);
+  top: -10px;
+  width: clamp(210px, 22vw, 270px);
+}
+.js .booth:not(.has-shot) .booth__bubble { opacity: 0; visibility: hidden; }
+.booth.has-shot .booth__bubble { animation: bubbleIn .5s cubic-bezier(.3, 1.6, .5, 1) 1.2s both; }
+@media (max-width: 700px) {
+  .booth__bubble { left: 50%; top: auto; bottom: 0; transform-origin: 50% 0; margin-left: calc(var(--cw) * -.45); }
+  .booth__bubble::after { display: none; }
+  .booth { min-height: calc(var(--cw) * .9 + 400px); }
+}
+/* ---------- Footer ---------- */
+footer {
+  background: var(--linen);
+  text-align: center;
+  padding: 72px 16px 56px;
+}
+footer .names {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 60px);
+  line-height: 1.1;
+  margin: 4px 0 0;
+}
+footer p { color: var(--ink-soft); margin: 8px 0 0; font-size: 20px; }
+footer::after {
+  content: "";
+  display: block;
+  width: 150px;
+  height: 20px;
+  margin: 26px auto 0;
+  background: var(--ornament) center / contain no-repeat;
+  opacity: .7;
+}
+/* Anfahrt-Kärtchen: gleich hoch, Button unten, kleine Blüte darüber */
+.cards { align-items: stretch; }
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 44px 32px 40px;
+  background: var(--white);
+}
+/* eine kleine Blüte direkt über dem Button */
+.card .card__action::before {
+  content: "";
+  display: block;
+  width: 48px;
+  aspect-ratio: 80 / 28;
+  margin: 0 auto 14px;
+  background: url("blossoms.svg") center / contain no-repeat;
+}
+.card > * { position: relative; z-index: 1; }
+.card .card__action { margin: auto 0 0; padding-top: 22px; }
+.card .card__action .btn { min-width: 230px; text-align: center; }
+
+/* ---------- Dresscode-Animation ---------- */
+.dc { margin: 36px 0 0; text-align: center; }
+.dc__scene { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; overflow: visible; }
+.dc__rail   { stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
+.dc__hook   { fill: none; stroke: var(--ink-soft); stroke-width: 2; stroke-linecap: round; }
+.dc__hanger { fill: none; stroke: var(--ink-soft); stroke-width: 2.5; stroke-linejoin: round; }
+.dc__fold   { fill: none; stroke: rgba(75, 68, 66, .18); stroke-width: 1.5; stroke-linecap: round; }
+.dc__belt   { fill: none; stroke: rgba(75, 68, 66, .3); stroke-width: 2; }
+.dc__shirt  { fill: var(--snow); }
+.dc__btn    { fill: rgba(75, 68, 66, .35); }
+.dc__pocket { fill: var(--snow); opacity: .8; }
+
+.dc__fill { fill: #E3A5AE; animation: dcColor 14s ease-in-out infinite; }
+.dc__fill--b { fill: #C9B5DD; animation-delay: -7s; }
+@keyframes dcColor {
+  0%, 100% { fill: #E3A5AE; }
+  20%      { fill: #A9C1A0; }
+  40%      { fill: #C9B5DD; }
+  60%      { fill: #F0D98C; }
+  80%      { fill: #A9C8E0; }
+}
+
+/* fliessender Farbverlauf */
+.dc__flow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* so breit wie der Spruch, halb so hoch wie vorher */
+  --dc-w: min(90vw, 1500px);
+  width: var(--dc-w);
+  height: clamp(90px, 9vw, 136px);
+  margin: 0 calc((100% - var(--dc-w)) / 2);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #E3A5AE, #A9C8E0, #A9C1A0, #C9B5DD, #F0D98C);
+  box-shadow: 0 20px 50px -28px rgba(196, 132, 142, .55);
+}
+.dc__blob {
+  position: absolute;
+  width: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(46px);
+  opacity: 1;
+  will-change: transform;
+}
+.dc__blob.b1 { background: #E3A5AE; left: -12%; top: -40%; animation: dcBlob1 13s ease-in-out infinite alternate; }
+.dc__blob.b2 { background: #A9C1A0; left: 22%;  top: 20%;  animation: dcBlob2 15s ease-in-out infinite alternate; }
+.dc__blob.b3 { background: #C9B5DD; left: 52%;  top: -45%; animation: dcBlob3 12s ease-in-out infinite alternate; }
+.dc__blob.b4 { background: #F0D98C; left: 58%;  top: 25%;  animation: dcBlob4 16s ease-in-out infinite alternate; }
+.dc__blob.b5 { background: #A9C8E0; left: -5%;  top: 30%;  animation: dcBlob5 14s ease-in-out infinite alternate; }
+@keyframes dcBlob1 { to { transform: translate(55%, 35%) scale(1.15); } }
+@keyframes dcBlob2 { to { transform: translate(-45%, -40%) scale(.9); } }
+@keyframes dcBlob3 { to { transform: translate(-60%, 45%) scale(1.1); } }
+@keyframes dcBlob4 { to { transform: translate(-35%, -50%) scale(1.2); } }
+@keyframes dcBlob5 { to { transform: translate(70%, -20%) scale(.95); } }
+.dc__flow-text {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(30px, 6vw, 52px);
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(140, 90, 100, .35);
+  letter-spacing: .02em;
+}
+
+/* sanftes Schwingen am Haken */
+.dc__sway > g {
+  transform-box: view-box;
+  transform-origin: 6px 0;
+  animation: dcSway 4.5s ease-in-out infinite alternate;
+}
+.dc__sway--b > g { animation-duration: 5.2s; animation-delay: -2s; }
+@keyframes dcSway {
+  from { transform: rotate(-3deg); }
+  to   { transform: rotate(3deg); }
+}
+
+/* fallende Blütenblätter */
+.dc__petal {
+  fill: var(--blossom);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dcPetal 9s linear infinite;
+}
+.dc__petal.p2 { fill: #C9B5DD; animation-duration: 11s; animation-delay: -3s; }
+.dc__petal.p3 { animation-duration: 10s; animation-delay: -6s; }
+.dc__petal.p4 { fill: #F0D98C; animation-duration: 12s; animation-delay: -1s; }
+.dc__petal.p5 { animation-duration: 9.5s; animation-delay: -4.5s; }
+.dc__petal.p6 { fill: #A9C1A0; animation-duration: 13s; animation-delay: -8s; }
+.dc__petal.p7 { animation-duration: 10.5s; animation-delay: -2.2s; }
+.dc__petal.p8 { fill: #C9B5DD; animation-duration: 11.5s; animation-delay: -7s; }
+@keyframes dcPetal {
+  0%   { transform: translate(0, -10px) rotate(0deg);     opacity: 0; }
+  10%  { opacity: .9; }
+  50%  { transform: translate(28px, 180px) rotate(200deg); }
+  90%  { opacity: .9; }
+  100% { transform: translate(-6px, 370px) rotate(400deg); opacity: 0; }
+}
+
+.dc__hint { margin: 26px 0 14px; color: var(--ink-soft); }
+.dc__palette {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 26px;
+}
+.dc__palette li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.dc__palette span {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .55);
+  animation: dcPulse 3.2s ease-in-out infinite;
+}
+.dc__palette li:nth-child(2) span { animation-delay: .4s; }
+.dc__palette li:nth-child(3) span { animation-delay: .8s; }
+.dc__palette li:nth-child(4) span { animation-delay: 1.2s; }
+.dc__palette li:nth-child(5) span { animation-delay: 1.6s; }
+@keyframes dcPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+.dc__bride { margin: 0 auto; max-width: 640px; text-align: center; color: var(--accent); font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1.4; }
+.dc__nope {
+  flex: 0 0 auto;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #F6F0E4;
+  border: 1px solid var(--line);
+}
+.dc__nope::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  bottom: -3px;
+  width: 1.5px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dc__fill, .dc__sway > g, .dc__petal, .dc__palette span,
+  .dc__blob { animation: none; }
+  .dc__petal { display: none; }
+}
+
+/* Reservierungscode-Box: schlicht, ohne Eckzweige */
+/* ganze Box mit Blütenranken eingerahmt (wie beim Programm)
+   Ranke 30px breit, Stiel liegt 10–20px vom Rand → Weiss erst ab 22px innen,
+   so bleibt ausserhalb der Ranke nichts Weisses. Blüten decken die Ecken ab. */
+.code {
+  position: relative;
+  border: 0 !important;
+  padding: 62px clamp(52px, 7vw, 84px) !important;
+  --vine: 30px;
+  --inset: 22px;
+  background:
+    url("flower.svg") left 1px top 1px        / 28px 28px no-repeat,
+    url("flower.svg") right 1px top 1px       / 28px 28px no-repeat,
+    url("flower.svg") left 1px bottom 1px     / 28px 28px no-repeat,
+    url("flower.svg") right 1px bottom 1px    / 28px 28px no-repeat,
+    url("vine-h.svg") left 24px top 0         / auto var(--vine) repeat-x,
+    url("vine-h.svg") right 24px bottom 0     / auto var(--vine) repeat-x,
+    url("vine.svg")   left 0 top 24px         / var(--vine) auto repeat-y,
+    url("vine.svg")   right 0 bottom 24px     / var(--vine) auto repeat-y,
+    linear-gradient(var(--white), var(--white)) center / calc(100% - 2 * var(--inset)) calc(100% - 2 * var(--inset)) no-repeat !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.gift::before {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 13px;
+  margin: 0 auto 16px;
+  background: var(--ornament) center / contain no-repeat;
+  opacity: .6;
+}
+
+/* ---------- Sanftes Einblenden ---------- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 1s ease, transform 1s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 560px) {
+  body { font-size: 22px; }
+  section { padding: 76px 16px; }
+  .nav ul { gap: 4px 20px; }
+  .timeline { --tl-pad: 56px; --tl-gap: 16px; --tl-sprig: 30px; }
+  .timeline li { grid-template-columns: 1fr 1fr; }
+  .timeline time { font-size: 26px; }
+  .timeline h3 { font-size: 26px; }
+}

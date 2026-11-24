@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400">
+  <defs>
+    <path id="lf" d="M0 0 C5 -7 15 -9 22 -6 C17 -1 8 1.5 0 0 Z"/>
+    <g id="fl"><g fill="#EDB9C0"><ellipse cx="0" cy="-5" rx="3.4" ry="4.8"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-5" rx="3.4" ry="4.8" transform="rotate(288)"/></g><circle r="2.1" fill="#EBCB7C"/></g>
+  </defs>
+  <g fill="none" stroke="#9DB394" stroke-width="1.2" stroke-linecap="round">
+    <path d="M200 370 A170 170 0 0 0 279.81 49.9"/>
+    <path d="M200 370 A170 170 0 0 1 120.19 49.9"/>
+  </g>
+  <g fill="#9DB394">
+    <use xlink:href="#lf" opacity=".75" transform="translate(223.66 368.35) rotate(-40) scale(1.15)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(255.35 360.74) rotate(13) scale(1.1)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(285 347.22) rotate(-62) scale(1.05)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(311.53 328.3) rotate(-9) scale(1.01)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(333.96 304.66) rotate(-84) scale(0.96)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(351.47 277.18) rotate(-31) scale(0.91)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(363.41 246.86) rotate(-106) scale(0.86)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(369.35 214.82) rotate(-53) scale(0.82)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(369.07 182.23) rotate(-128) scale(0.77)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(362.57 150.3) rotate(-75) scale(0.72)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(350.1 120.19) rotate(-150) scale(0.67)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(332.11 93.02) rotate(-97) scale(0.62)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(309.27 69.77) rotate(-172) scale(0.58)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(176.34 368.35) rotate(-140) scale(1.15)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(144.65 360.74) rotate(-193) scale(1.1)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(115 347.22) rotate(-118) scale(1.05)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(88.47 328.3) rotate(-171) scale(1.01)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(66.04 304.66) rotate(-96) scale(0.96)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(48.53 277.18) rotate(-149) scale(0.91)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(36.59 246.86) rotate(-74) scale(0.86)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(30.65 214.82) rotate(-127) scale(0.82)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(30.93 182.23) rotate(-52) scale(0.77)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(37.43 150.3) rotate(-105) scale(0.72)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(49.9 120.19) rotate(-30) scale(0.67)"/>
+    <use xlink:href="#lf" opacity=".75" transform="translate(67.89 93.02) rotate(-83) scale(0.62)"/>
+    <use xlink:href="#lf" opacity="1" transform="translate(90.73 69.77) rotate(-8) scale(0.58)"/>
+  </g>
+  <g fill="#9DB394"><use xlink:href="#lf" transform="translate(196 372) rotate(-120) scale(.9)"/><use xlink:href="#lf" transform="translate(204 372) rotate(-60) scale(.9)"/></g>
+  <use xlink:href="#fl" transform="translate(200 369) scale(1.5)"/>
+  <use xlink:href="#fl" transform="translate(178 363) scale(1.05)"/>
+  <use xlink:href="#fl" transform="translate(222 363) scale(1.05)"/>
+  <circle cx="163" cy="355" r="2.6" fill="#D9C2E6"/><circle cx="237" cy="355" r="2.6" fill="#D9C2E6"/>
+  <circle cx="189" cy="384" r="2" fill="#EDB9C0"/><circle cx="211" cy="384" r="2" fill="#EDB9C0"/>
+  <circle cx="285" cy="52.78" r="2.4" fill="#EDB9C0"/><circle cx="115" cy="52.78" r="2.4" fill="#EDB9C0"/>
+</svg>

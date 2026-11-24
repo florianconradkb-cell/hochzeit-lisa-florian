@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+  <g fill="#EDB9C0">
+    <circle cx="0" cy="-5" r="4"/>
+    <circle cx="4.76" cy="-1.55" r="4"/>
+    <circle cx="2.94" cy="4.05" r="4"/>
+    <circle cx="-2.94" cy="4.05" r="4"/>
+    <circle cx="-4.76" cy="-1.55" r="4"/>
+  </g>
+  <circle r="2.2" fill="#EBCB7C"/>
+</svg>

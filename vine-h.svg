@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 140 40">
+  <defs>
+    <path id="l" d="M0 0 C2.6 -4.2 7.7 -5.6 11.8 -4.2 C9 -0.5 4.2 0.6 0 0 Z" fill="#9DB394"/>
+    <g id="f">
+      <g fill="#EDB9C0">
+        <ellipse cx="0" cy="-2.9" rx="1.9" ry="2.7"/>
+        <ellipse cx="0" cy="-2.9" rx="1.9" ry="2.7" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-2.9" rx="1.9" ry="2.7" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-2.9" rx="1.9" ry="2.7" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-2.9" rx="1.9" ry="2.7" transform="rotate(288)"/>
+      </g>
+      <circle r="1.2" fill="#EBCB7C"/>
+    </g>
+  </defs><g transform="translate(0 40) rotate(-90)">
+  <g fill="none" stroke="#9DB394" stroke-width=".8" stroke-linecap="round">
+    <!-- S-förmiger Stiel, oben und unten nahtlos -->
+    <path d="M20 0 C28 20 28 50 20 70 C12 90 12 120 20 140"/>
+    <!-- Seitentriebe -->
+    <path d="M25.6 52 C29 55 31 58 31.5 62"/>
+    <path d="M14.4 112 C11 109 9.4 106 9 102"/>
+  </g>
+  <use xlink:href="#l" transform="translate(25 20) rotate(-35)"/>
+  <use xlink:href="#l" transform="translate(26.4 38) rotate(25) scale(.8)"/>
+  <use xlink:href="#l" transform="translate(15 90) rotate(215)"/>
+  <use xlink:href="#l" transform="translate(13.6 128) rotate(150) scale(.8)"/>
+  <use xlink:href="#f" transform="translate(31.6 64.5)"/>
+  <circle cx="8.8" cy="100.4" r="1.6" fill="#D9C2E6"/>
+</g></svg>
